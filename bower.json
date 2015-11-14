@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
+    "bootstrap": "*",
     "d3": "~3.5.8",
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
