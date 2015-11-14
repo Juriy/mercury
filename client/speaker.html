@@ -13,7 +13,11 @@
 </head>
 
 <body>
-    <h1>Speaker view</h1>
+    <div id="obvChart" class="epoch pchart"></div>
+    <div id="goodChart" class="epoch pchart"></div>
+    <div id="acceptableChart" class="epoch pchart"></div>
+    <div id="sosoChart" class="epoch pchart"></div>
+    <div id="boredChart" class="epoch pchart"></div>
 
     <script src="vnd/jquery/dist/jquery.js"></script>
     <script src="vnd/d3/d3.js"></script>
@@ -22,20 +26,5 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/speaker.js"></script>
 </body>
-    <div id="obvChart"  class="epoch pchart"></div>
-    <div id="goodChart"  class="epoch pchart"></div>
-    <div id="acceptableChart"  class="epoch pchart"></div>
-    <div id="sosoChart"  class="epoch pchart"></div>
-    <div id="boredChart"  class="epoch pchart"></div>
-<script>
-    var range = [0, 100];
-    var axes = ["left", "bottom"];
-    var obvChart = $('#obvChart').epoch({ type: 'time.area', data: obvi, axes: axes, range:range, historySize: 240});
-    var goodChart = $('#goodChart').epoch({ type: 'time.area', data: good, axes: axes, range:range, historySize: 240});
-    var acceptableChart = $('#acceptableChart').epoch({ type: 'time.area', data: acceptable, axes: axes, range:range, historySize: 240});
-    var sosoChart = $('#sosoChart').epoch({ type: 'time.area', data: soso, axes: axes, range:range, historySize: 240});
-    var boredChart = $('#boredChart').epoch({ type: 'time.area', data: bored, axes: axes, range:range, historySize: 240});
-</script>
-    
     
 </html>
