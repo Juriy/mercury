@@ -4,6 +4,11 @@ let assert = require('assert');
 let Classroom = require('../src/Classroom');
 
 describe('Classroom', () => {
+
+    let memberJack = {name: 'Jack'};
+    let memberJill = {name: 'Jill'};
+
+
     describe('#constructor', () => {
         it('should construct objects', () => {
             let cr = new Classroom();
@@ -23,8 +28,6 @@ describe('Classroom', () => {
 
     describe('#addMember', () => {
         let cr = null;
-        let memberJack = {name: 'Jack'};
-        let memberJill = {name: 'Jill'};
 
         beforeEach(function() {
             cr = new Classroom();
@@ -59,6 +62,39 @@ describe('Classroom', () => {
             cr.addMember(memberJack);
             cr.setMark(memberJack.name, 2);
         });
+    });
 
-    })
+    describe('mark count', () => {
+        it('default marks are GOOD', () => {
+            let cr = new Classroom();
+            cr.addMember(memberJack);
+            cr.addMember(memberJill);
+            let state = cr.getMarks();
+            assert.equal([0, 2, 0, 0, 0].toString(), state.marks.toString());
+            assert.equal(2, state.total);
+        });
+
+        it('Marks are changing', () => {
+            let cr = new Classroom();
+            cr.addMember(memberJack);
+            cr.addMember(memberJill);
+            cr.setMark(memberJack.name, Classroom.TOO_OBVIOUS);
+
+            let state = cr.getMarks();
+            assert.equal([1, 1, 0, 0, 0].toString(), state.marks.toString());
+            assert.equal(2, state.total);
+        });
+
+        it('Removing user removes his marks', () => {
+            let cr = new Classroom();
+            cr.addMember(memberJack);
+            cr.addMember(memberJill);
+            cr.setMark(memberJack.name, Classroom.TOO_OBVIOUS);
+            cr.removeMember(memberJill);
+
+            let state = cr.getMarks();
+            assert.equal([1, 0, 0, 0, 0].toString(), state.marks.toString());
+            assert.equal(1, state.total);
+        });
+    });
 });
