@@ -23,18 +23,32 @@ describe('Classroom', () => {
 
     describe('#addMember', () => {
         let cr = null;
-        before(function() {
+        let memberJack = {name: 'Jack'};
+        let memberJill = {name: 'Jill'};
+
+        beforeEach(function() {
             cr = new Classroom();
         });
 
         it('should report the joined member', (done) => {
-            let member = {name: 'Jack'};
             cr.on('member-joined', (e) => {
                 assert.equal('Jack', e.member.name);
                 done();
             });
 
-            cr.addMember(member);
+            cr.addMember(memberJack);
         });
+
+        it('should increase member count on join', (done) => {
+            cr.addMember(memberJack);
+
+            cr.on('member-joined', (e) => {
+                assert.equal(2, e.memberCount);
+                done();
+            });
+
+            cr.addMember(memberJill);
+        });
+
     })
 });
