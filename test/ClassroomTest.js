@@ -50,5 +50,15 @@ describe('Classroom', () => {
             cr.addMember(memberJill);
         });
 
+        it('should report new mark', (done) => {
+            cr.on('mark', (e) => {
+                assert.equal(2, e.mark);
+                done();
+            });
+
+            cr.addMember(memberJack);
+            cr.setMark(memberJack.name, 2);
+        });
+
     })
 });
