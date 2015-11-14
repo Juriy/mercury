@@ -11,7 +11,11 @@ app.use(express.static(__dirname + '/client'));
 
 io.on('connection', onUserConnected);
 
-http.listen(port, () => {console.log('listening on *:3000');});
+app.get('/', (req, res) => {
+    res.send("Server starting...");
+});
+
+http.listen(port, () => {console.log('listening on *', port);});
 
 function onUserConnected(socket) {
     socket.on('disconnect', () => console.log('user disconnected'));
