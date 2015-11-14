@@ -1,12 +1,15 @@
 'use strict';
 
-let http = require('http').createServer();
+let express = require('express');
+let app = express();
+let http = require('http').createServer(app);
 let io = require('socket.io')(http);
-let Classroom = require('./src/Classroom');
 
-http.listen(8080, () => console.log('listening on *:' + port));
+app.use(express.static(__dirname + '/client'));
 
 io.on('connection', onUserConnected);
+
+http.listen(3000, () => {console.log('listening on *:3000');});
 
 function onUserConnected(socket) {
     socket.on('disconnect', () => console.log('user disconnected'));

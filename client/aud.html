@@ -14,6 +14,17 @@
 <body>
 
 
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('message', onMessage);
+
+    function onMessage(msg) {
+        console.log(msg);
+    }
+
+    socket.emit('message', 'foo');
+</script>
 
 <script src="js/aud.js"></script>
 </body>
