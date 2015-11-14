@@ -2,8 +2,8 @@
 
 var socket = io();
 $('button').click(function(){
-    socket.emit('mark', {"mark": $(this).attr("id")});
+    socket.emit('mark', {
+        mark: +$(this).attr('id').substr('5')
+    });
 });
-
-socket.on('marks', (msg) => {console.log(msg.total);});
 
