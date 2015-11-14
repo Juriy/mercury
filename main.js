@@ -3,14 +3,14 @@
 let express = require('express');
 let app = express();
 let http = require('http').createServer(app);
-let io = require('socket.io')(http);
+let io = require('socket.io')({
+    "transports": ["xhr-polling"],
+    "polling duration": 10
+});
 
 var port = process.env.PORT || 3000;
 
-io.configure(function () {
-    io.set("transports", ["xhr-polling"]);
-    io.set("polling duration", 10);
-});
+
 
 app.use(express.static(__dirname + '/client'));
 
