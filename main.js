@@ -7,6 +7,11 @@ let io = require('socket.io')(http);
 
 var port = process.env.PORT || 3000;
 
+io.configure(function () {
+    io.set("transports", ["xhr-polling"]);
+    io.set("polling duration", 10);
+});
+
 app.use(express.static(__dirname + '/client'));
 
 io.on('connection', onUserConnected);
