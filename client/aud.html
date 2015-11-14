@@ -8,14 +8,24 @@
     <meta name="author" content="JS Hooligans">
 
     <title>Audience view</title>
+    <link rel="stylesheet" href="vnd/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
+<div class="row">
+    <div class="col-lg-4">
+        <button class="btn btn-default btn-success" type="submit" id="MARK_1">Too obvious...</button>
+        <button class="btn btn-default btn-info" type="submit" id="MARK_2">Good</button>
+        <button class="btn btn-default" type="submit" id="MARK_3">Acceptable</button>
+        <button class="btn btn-default btn-warning" type="submit" id="MARK_4">So-so</button>
+        <button class="btn btn-default btn-danger" type="submit" id="MARK_5">Feckin' bore</button>
 
-<button id="chpoke">Chpoke!</button>
+    </div>
+</div>
 
 <script src="vnd/jquery/dist/jquery.js"></script>
+<script src="vnd/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/aud.js"></script>
 </body>
