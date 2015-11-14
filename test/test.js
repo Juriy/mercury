@@ -19,4 +19,22 @@ describe('Classroom', () => {
             cr.emit('foo', 1);
         });
     });
+
+
+    describe('#addMember', () => {
+        let cr = null;
+        before(function() {
+            cr = new Classroom();
+        });
+
+        it('should report the joined member', (done) => {
+            let member = {name: 'Jack'};
+            cr.on('member-joined', (e) => {
+                assert.equal('Jack', e.member.name);
+                done();
+            });
+
+            cr.addMember(member);
+        });
+    })
 });
