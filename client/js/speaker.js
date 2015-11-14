@@ -14,14 +14,14 @@ var socket = io();
 socket.on('message', (msg) => {console.log(msg);});
 socket.on('marks', (e) =>  {
     console.log(Date.now(), 'total', e.total, 'votes', e.marks);
-    
+    let markCount = e.marks.reduce((prev, cur) => prev + cur, 0);
     var markTime = timestamp();
     
-    obvChart.push([{time:markTime, y:getMark(e.marks[0], e.total)}]);
-    goodChart.push([{time:markTime, y:getMark(e.marks[1], e.total)}]);
-    acceptableChart.push([{time:markTime, y:getMark(e.marks[2], e.total)}]);
-    sosoChart.push([{time:markTime, y:getMark(e.marks[3], e.total)}]);
-    boredChart.push([{time:markTime, y:getMark(e.marks[4], e.total)}]);
+    obvChart.push([{time:markTime, y:getMark(e.marks[0], markCount)}]);
+    goodChart.push([{time:markTime, y:getMark(e.marks[1], markCount)}]);
+    acceptableChart.push([{time:markTime, y:getMark(e.marks[2], markCount)}]);
+    sosoChart.push([{time:markTime, y:getMark(e.marks[3], markCount)}]);
+    boredChart.push([{time:markTime, y:getMark(e.marks[4], markCount)}]);
     
 });
 socket.emit('message', 'foo');
