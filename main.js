@@ -23,6 +23,7 @@ function onUserConnected(socket) {
         name: 'user' + ++count
     };
 
+    console.log(me.name, 'connected');
     classroom.addMember(me);
     socket.on('disconnect', () => classroom.removeMember(me));
 
@@ -34,8 +35,5 @@ function onUserConnected(socket) {
 
 
 setInterval(() => {
-    io.emit('marks', {
-        total: 7,
-        marks: [2, 3, 3, 4, 1]
-    });
+    io.emit('marks', classroom.getMarks());
 }, 1000);
