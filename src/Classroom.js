@@ -26,4 +26,4 @@ class Classroom extends EventEmitter {
     }
 }
 
-module.exports = Classroom;
+exports = module.exports = Classroom;
