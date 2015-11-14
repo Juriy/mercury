@@ -1,10 +1,9 @@
 'use strict';
 
 var socket = io();
-$("#chpoke").click( function(){
-    socket.emit('message', {"message": "Chpoke!!!"});
-    return false;
+$('button').click(function(){
+    socket.emit('message', {"message": $(this).attr("id")});
 });
 
-socket.on('message', (msg) => {console.log(msg);});
-socket.emit('message', 'foo');
+socket.on('message', (msg) => {console.log(msg.message);});
+
