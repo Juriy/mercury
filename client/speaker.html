@@ -30,11 +30,11 @@
 <script>
     var range = [0, 100];
     var axes = ["left", "bottom"];
-    var obvChart = $('#obvChart').epoch({ type: 'time.area', data: obvi, axes: axes, range:range});
-    var goodChart = $('#goodChart').epoch({ type: 'time.area', data: good, axes: axes, range:range});
-    var acceptableChart = $('#acceptableChart').epoch({ type: 'time.area', data: acceptable, axes: axes, range:range});
-    var sosoChart = $('#sosoChart').epoch({ type: 'time.area', data: soso, axes: axes, range:range});
-    var boredChart = $('#boredChart').epoch({ type: 'time.area', data: bored, axes: axes, range:range});
+    var obvChart = $('#obvChart').epoch({ type: 'time.area', data: obvi, axes: axes, range:range, historySize: 240});
+    var goodChart = $('#goodChart').epoch({ type: 'time.area', data: good, axes: axes, range:range, historySize: 240});
+    var acceptableChart = $('#acceptableChart').epoch({ type: 'time.area', data: acceptable, axes: axes, range:range, historySize: 240});
+    var sosoChart = $('#sosoChart').epoch({ type: 'time.area', data: soso, axes: axes, range:range, historySize: 240});
+    var boredChart = $('#boredChart').epoch({ type: 'time.area', data: bored, axes: axes, range:range, historySize: 240});
 </script>
     
     
