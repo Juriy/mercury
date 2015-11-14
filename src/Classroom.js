@@ -16,6 +16,10 @@ class Classroom extends EventEmitter {
         });
     }
 
+    removeMember(member) {
+
+    }
+
     setMark(name, mark) {
         let member = this._members.get(name);
         member.mark = mark;
