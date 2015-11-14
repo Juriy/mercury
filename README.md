@@ -1,0 +1,2 @@
+# mercury
+Hackathon entry
