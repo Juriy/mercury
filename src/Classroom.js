@@ -8,24 +8,23 @@ class Classroom extends EventEmitter {
         this._members = new Map();
     }
 
-    addMember(member) {
-        member.mark = Classroom.GOOD;
-        this._members.set(member.name, member);
+    addMember(name) {
+        this._members.set(name, {});
         this.emit('member-joined', {
-            member: member,
+            member: name,
             memberCount: this._members.size
         });
     }
 
-    removeMember(member) {
-        this._members.delete(member.name);
+    removeMember(name) {
+        this._members.delete(name);
     }
 
     setMark(name, mark) {
         let member = this._members.get(name);
         member.mark = mark;
         this.emit('mark', {
-            member: member,
+            member: name,
             mark: mark
         });
     }
@@ -34,7 +33,9 @@ class Classroom extends EventEmitter {
         let marks = [0, 0, 0, 0, 0];
 
         for (let member of this._members.values()) {
-            marks[member.mark]++;
+            if (typeof member.mark === 'number') {
+                marks[member.mark]++;
+            }
         }
 
         return {

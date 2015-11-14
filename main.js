@@ -27,17 +27,16 @@ app.get('/', (req, res) => {
 http.listen(port, () => {console.log('listening on *', port);});
 
 function onUserConnected(socket) {
-    let me = {
-        name: 'user' + ++count
-    };
+    let name = 'user' + ++count;
 
-    console.log(me.name, 'connected');
-    classroom.addMember(me);
-    socket.on('disconnect', () => classroom.removeMember(me));
+    classroom.addMember(name);
+    socket.on('disconnect', () => classroom.removeMember(name));
 
     socket.on('message', msg => io.emit('message', msg));
-    socket.on('mark', (e) => classroom.setMark(me.name, e.mark));
+    socket.on('mark', (e) => classroom.setMark(name, e.mark));
     socket.emit('message', 'welcome to server');
+
+    console.log(name, 'connected');
 }
 
 
