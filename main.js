@@ -33,7 +33,7 @@ function onUserConnected(socket) {
 
 setInterval(() => {
     io.emit('marks', {
-        total: 7,
-        marks: [2, 3, 3, 4, 1]
+        total: 15,
+        marks: [Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 4) + 1), Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1)]
     });
 }, 1000);

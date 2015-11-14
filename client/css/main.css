@@ -1,0 +1,20 @@
+#obvChart .layer-1 .area {
+  fill: #5cb85c;
+}
+#goodChart .layer-1 .area {
+  fill: #5bc0de;
+}
+#acceptableChart .layer-1 .area {
+  fill: #C7C7C7;
+}
+#sosoChart .layer-1 .area {
+  fill: #f0ad4e;
+}
+#boredChart .layer-1 .area {
+  fill: #d9534f;
+}
+
+.pchart {
+    width: 600px; 
+    height: 100px
+}
